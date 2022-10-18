@@ -8,16 +8,14 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-public class DialogoMoverCarro extends JDialog
+public class DialogoVentaCarro extends JDialog
 {
     //----------------------
     //Atributos
     //----------------------
     private JLabel lbTitulo;
-    private JLabel lbPosX;
-    private JLabel lbPosY;
-    private JTextField txPosX;
-    private JTextField txPosY;
+    private JLabel lbPrecioCarro;
+    private JTextField txPrecioCarro;
     private JButton btAceptar;
 
     //-------------------------
@@ -25,41 +23,31 @@ public class DialogoMoverCarro extends JDialog
     //-------------------------
     
     //Metodo constructor
-    public DialogoMoverCarro()
+    public DialogoVentaCarro()
     {
         //Definición del contenedor de la ventana
         setLayout(null);
         
         //Creación y adición del elementos
-        lbTitulo = new JLabel("Mover Carro",JLabel.CENTER);
+        lbTitulo = new JLabel("Venta Carro",JLabel.CENTER);
         lbTitulo.setFont(new Font("Arial", Font.BOLD, 25));
         lbTitulo.setBounds(10,10,280,20);
         add(lbTitulo);
         
-        lbPosX= new JLabel("X = ",JLabel.RIGHT);
-        lbPosX.setFont(new Font("Arial", Font.BOLD, 25));
-        lbPosX.setBounds(10,50,140,20);
-        add(lbPosX);
+        lbPrecioCarro= new JLabel("Precio = ",JLabel.RIGHT);
+        lbPrecioCarro.setFont(new Font("Arial", Font.BOLD, 25));
+        lbPrecioCarro.setBounds(10,50,140,20);
+        add(lbPrecioCarro);
         
-        lbPosY= new JLabel("Y = ",JLabel.RIGHT);
-        lbPosY.setFont(new Font("Arial", Font.BOLD, 25));
-        lbPosY.setBounds(10,90,140,20);
-        add(lbPosY);
-        
-        txPosX= new JTextField();
-        txPosX.setFont(new Font("Arial", Font.BOLD, 25));
-        txPosX.setBounds(150,50,100,25);
-        add(txPosX);
-        
-        txPosY= new JTextField();
-        txPosY.setFont(new Font("Arial", Font.BOLD, 25));
-        txPosY.setBounds(150,90,100,25);
-        add(txPosY);
+        txPrecioCarro= new JTextField();
+        txPrecioCarro.setFont(new Font("Arial", Font.BOLD, 25));
+        txPrecioCarro.setBounds(150,50,100,25);
+        add(txPrecioCarro);
         
         btAceptar = new JButton("Aceptar");
         btAceptar.setFont(new Font("Arial", Font.BOLD, 25));
         btAceptar.setBounds(20,140,260,25);
-        btAceptar.setActionCommand("aceptar");
+        btAceptar.setActionCommand("aceptarventa");
         add(btAceptar);
                
         //Caracteristicas de la ventana
@@ -70,14 +58,9 @@ public class DialogoMoverCarro extends JDialog
         setVisible(true);
     }
     
-    public String getPosX()
+    public String getPrecioCarro()
     {
-        return txPosX.getText();
-    }
-    
-    public String getPosY()
-    {
-        return txPosY.getText();
+        return txPrecioCarro.getText();
     }
     
     public void agregarOyentesBotones(ActionListener pAL)

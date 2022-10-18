@@ -8,16 +8,27 @@ public class EmpresaAutomotriz
 
     public EmpresaAutomotriz()
     {
-        numEmpleados = new Empleado [NUM_EMPLEADOS];
+        numEmpleados = new Empleado[NUM_EMPLEADOS];
     } 
 
-    public int calcularNomina()
+    public void agregarEmpleado(Empleado emp , int pos)
     {
-        for(int i=0, i < numEmpleados.length , i++)
+        numEmpleados[pos] = emp;
+    }
+
+    public double calcularNomina()
+    {
+        double totalNomina = 0;
+        for(int i=0; i < numEmpleados.length ; i++)
         {
-            totalNomina = totalNomina + numEmpleados[i].getsueldo();
+            totalNomina = totalNomina + numEmpleados[i].getSueldo();
         }
         return totalNomina;
+    }
+
+    public Empleado getNumEmpleado(int i)
+    {
+        return numEmpleados[i];
     }
 
 }

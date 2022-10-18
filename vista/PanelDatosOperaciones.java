@@ -1,11 +1,17 @@
 package vista;
 
 import java.awt.Color;
+import java.awt.Font;
+import static java.awt.Font.BOLD;
 import javax.swing.BorderFactory;
+import javax.swing.DefaultComboBoxModel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 
 public class PanelDatosOperaciones extends JPanel
@@ -15,12 +21,10 @@ public class PanelDatosOperaciones extends JPanel
     //------------------------
     private JLabel lbImagen;
     private ImageIcon iImagen;
-    private JLabel lbColor;
-    private JLabel lbPosX;
-    private JLabel lbPosY;
-    private JTextField tfColor;
-    private JTextField tfPosX;
-    private JTextField tfPosY;
+    public JButton bVenta;
+    public JButton bCalcularSalario;
+    public JButton bNomina;
+    public JComboBox boxNombres;
     
     //------------------------
     //Metodos
@@ -38,61 +42,49 @@ public class PanelDatosOperaciones extends JPanel
         lbImagen = new JLabel(iImagen);
         lbImagen.setBounds(10,10,220,176);
         add(lbImagen);
+
+        String[] nombres = {"Juan" , "Pedro" , "Pablo" , "Carlos" , "Mario" , "Jose" , "Andres" , "Luis" , "Dario" , "Alfredo"};
+
+        boxNombres = new JComboBox<>(nombres);
+        boxNombres.setBounds(240 , 40 , 100 , 20);
+        add(boxNombres);
         
-        //Creación y adición de etiquetas Color, PosX y PosY
-        lbColor = new JLabel("Color = ");
-        lbColor.setBounds(230,10,60,20);
-        add(lbColor);
+        bVenta = new JButton("Venta de carro");
+        bVenta.setFont(new Font("Arial", BOLD, 12));
+        bVenta.setBounds(10,185,120,20);
+        add(bVenta);
+        bVenta.setActionCommand("VentaCarro");
         
-        lbPosX = new JLabel("PosX = ");
-        lbPosX.setBounds(230,40,60,20);
-        add(lbPosX);
+        bCalcularSalario = new JButton("Calcular Salario");
+        bCalcularSalario.setFont(new Font("Arial", BOLD, 12));
+        bCalcularSalario.setBounds(140,185,120,20);
+        add(bCalcularSalario);
+        bCalcularSalario.setActionCommand("calcularSalario");
         
-        lbPosY = new JLabel("PosY = ");
-        lbPosY.setBounds(230,70,60,20);
-        add(lbPosY);
-        
-        
-        //Creación y adición de campos de texto
-        tfColor = new JTextField("Azul");
-        tfColor.setBounds(300, 10, 60, 20);
-        add(tfColor);
-        
-        tfPosX = new JTextField("10");
-        tfPosX.setBounds(300, 40, 60, 20);
-        add(tfPosX);
-        
-        tfPosY = new JTextField("10");
-        tfPosY.setBounds(300, 70, 60, 20);
-        add(tfPosY);
+        bNomina = new JButton("Calcular Nomina");
+        bNomina.setFont(new Font("Arial", BOLD, 12));
+        bNomina.setBounds(270,185,120,20);
+        add(bNomina);
+        bNomina.setActionCommand("calcularNomina");
+
         
         //Borde y titulo del panel
         TitledBorder borde = BorderFactory.createTitledBorder("Datos de Entrada");
         borde.setTitleColor(Color.BLUE);
         setBorder(borde);
     }
-    
-    //Metodos de acceso a la información de las cajas de texto
-    public String getColor()
+
+    public void agregarOyentesBotones(ActionListener pAL)
     {
-        return tfColor.getText();
+        bVenta.addActionListener(pAL);
+        bCalcularSalario.addActionListener(pAL);
+        bNomina.addActionListener(pAL);
+    }
+
+    public int getNombres()
+    {
+        return boxNombres.getSelectedIndex();
     }
     
-    public String getPosX()
-    {
-        return tfPosX.getText();
-    }
-    
-    public String getPosY()
-    {
-        return tfPosY.getText();
-    }
-    
-    //Metodo para borrar cajas de texto
-    public void borrar()
-    {
-        tfColor.setText("");
-        tfPosX.setText("");
-        tfPosY.setText("");
-    }
+
 }

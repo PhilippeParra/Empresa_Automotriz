@@ -9,7 +9,7 @@ public class VentanaPrincipal extends JFrame
     //----------------------
     public PanelDatosOperaciones miPanelDatosOperaciones;
     public PanelResultados miPanelResultado;
-    public DialogoMoverCarro miDialogoMoverCarro;
+    public DialogoVentaCarro miDialogoVentaCarro;
 
     //-------------------------
     //Métodos
@@ -24,19 +24,19 @@ public class VentanaPrincipal extends JFrame
         
         //Creación y adición del PanelEntradaDatos
         miPanelDatosOperaciones = new PanelDatosOperaciones();
-        miPanelDatosOperaciones.setBounds(10,10,380,190);
+        miPanelDatosOperaciones.setBounds(10,10,400,220);
         add(miPanelDatosOperaciones);
         
         //Creación y adición del PanelOperaciones
         miPanelResultado = new PanelResultados();
-        miPanelResultado.setBounds(10,290,380,250);
+        miPanelResultado.setBounds(10,230,400,150);
         add(miPanelResultado);
         
-        miDialogoMoverCarro = null;
+        miDialogoVentaCarro = null;
         
         //Caracteristicas de la ventana
-        setTitle("Sueldo Empleados");
-        setSize(800,600);
+        setTitle("Empresa Automotriz");
+        setSize(440,420);
         //setLocation(10,10);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -45,8 +45,8 @@ public class VentanaPrincipal extends JFrame
     }
     
     //Crear ventana dialogo Mover
-    public void crearDialogoMover()
+    public void crearDialogoVentaCarro()
     {
-        miDialogoMoverCarro = new DialogoMoverCarro();
+        miDialogoVentaCarro = new DialogoVentaCarro();
     }
 }

@@ -1,16 +1,17 @@
 package modelo;
 
 import java.util.ArrayList;
+import modelo.Carro;
 
 public class Empleado
 {
     //--------------------------
     //Atributos
     //--------------------------
-    private static int salarioMin = 1000000;
-    private int sueldo;
+    private final static int SALARIO_MINIMO = 1000000;
+    private double sueldo;
     private String nombreEmpleado;
-    ArrayList <String> ventas;   
+    private ArrayList ventas;   
     
     //--------------------------
     //Métodos
@@ -22,17 +23,41 @@ public class Empleado
         this.ventas = new ArrayList();
     }
 
-    public void venderCarro()
+    public void venderCarro(int carroVendido)
     {
-        ventas.add();
+        ventas.add(carroVendido);
     }
 
-    public void CalcularSueldo();
+    public void calcularSueldo()
     {
         if(ventas.isEmpty())
         {
-            
+            sueldo = SALARIO_MINIMO;
         }
+        else
+        {
+            int numCarrosVendidos = ventas.size();
+            sueldo = SALARIO_MINIMO + 100000*numCarrosVendidos;
+
+            double totalVentas = 0;
+            for(int i=0; i<numCarrosVendidos; i ++)
+            {
+                Carro carro = (Carro)ventas.get(i);
+                totalVentas = totalVentas + carro.getPrecio();
+            }
+
+            sueldo = sueldo + (0.02 * totalVentas);
+        }
+    }
+
+    public String getNombreEmpleado()
+    {
+        return nombreEmpleado;
+    }
+
+    public double getSueldo()
+    {
+        return sueldo;
     }
 
 
